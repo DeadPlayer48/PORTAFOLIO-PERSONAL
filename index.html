@@ -200,7 +200,7 @@
                             <div class="bg-primary text-on-primary p-xs rounded-lg border-2 border-on-background">
                                 <span class="material-symbols-outlined">mail</span>
                             </div>
-                            <span class="font-h3">hello@yhonny.dev</span>
+                            <span class="font-h3">yhonnyarb@gmail.com</span>
                         </div>
                         <div class="flex items-center gap-sm">
                             <div class="bg-secondary text-on-secondary p-xs rounded-lg border-2 border-on-background">
@@ -211,20 +211,20 @@
                     </div>
                 </div>
                 
-                <form class="relative space-y-sm bg-surface p-md rounded-2xl border-2 border-on-background cel-shadow">
+                <form id="contact-form" class="relative space-y-sm bg-surface p-md rounded-2xl border-2 border-on-background cel-shadow">
                     <div class="space-y-xs">
                         <label class="font-label text-on-surface-variant uppercase">Nombre</label>
-                        <input class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="Tu nombre" type="text" />
+                        <input id="contact-name" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="Tu nombre" type="text" required />
                     </div>
                     <div class="space-y-xs">
                         <label class="font-label text-on-surface-variant uppercase">Email</label>
-                        <input class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="hola@ejemplo.com" type="email" />
+                        <input id="contact-email" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="hola@ejemplo.com" type="email" required />
                     </div>
                     <div class="space-y-xs">
                         <label class="font-label text-on-surface-variant uppercase">Mensaje</label>
-                        <textarea class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="¿En qué estás pensando?" rows="4"></textarea>
+                        <textarea id="contact-message" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="¿En qué estás pensando?" rows="4" required></textarea>
                     </div>
-                    <button class="w-full bg-primary text-on-primary py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-h3 transition-all mt-base" type="button">
+                    <button type="submit" class="w-full bg-primary text-on-primary py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-h3 transition-all mt-base">
                         Enviar Mensaje
                     </button>
                 </form>

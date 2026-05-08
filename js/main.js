@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 imageContent = `
-                    <img class="w-full h-full object-cover ${project.category==='illustration'?'grayscale group-hover:grayscale-0':''} ${project.category==='animation'?'group-hover:scale-105':''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
+                    <img class="w-full h-full object-cover ${project.category==='animation'?'group-hover:scale-105':''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
                     ${project.category === 'animation' ? '<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20"><span class="material-symbols-outlined text-surface text-6xl">play_circle</span></div>' : ''}
                 `;
             }
@@ -122,6 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', () => {
             filterProjects();
+        });
+    }
+
+    // --- Contact Form ---
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            const subject = encodeURIComponent(`Nuevo mensaje de ${name} desde tu Portafolio`);
+            const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`);
+
+            window.location.href = `mailto:hello@yhonny.dev?subject=${subject}&body=${body}`;
+            
+            contactForm.reset();
         });
     }
 });
