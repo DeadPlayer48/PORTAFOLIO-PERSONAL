@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Yhonny_arb | Multimedia Developer</title>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <!-- Estilos Personalizados -->
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-sm left-1/2 -translate-x-1/2 w-[calc(100%-theme(spacing.gutter))] max-w-container-max z-50 flex justify-between items-center px-gutter py-xs bg-surface/90 backdrop-blur-md rounded-xl border-2 border-on-background shadow-[4px_4px_0px_0px_#6d4ca6]">
+        <div class="font-h3 text-h3 font-black text-on-background">Yhonny_arb</div>
+        <div class="hidden md:flex gap-md items-center">
+            <a class="font-h3 text-h3 text-primary border-b-2 border-primary pb-1" href="#home">Home</a>
+            <a class="font-body-md text-on-surface-variant font-medium hover:bg-primary-container transition-all duration-200 px-sm py-xs rounded-lg" href="#about">About</a>
+            <a class="font-body-md text-on-surface-variant font-medium hover:bg-primary-container transition-all duration-200 px-sm py-xs rounded-lg" href="#skills">Skills</a>
+            <a class="font-body-md text-on-surface-variant font-medium hover:bg-primary-container transition-all duration-200 px-sm py-xs rounded-lg" href="#work">Work</a>
+            <a class="font-body-md text-on-surface-variant font-medium hover:bg-primary-container transition-all duration-200 px-sm py-xs rounded-lg" href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="inline-block bg-primary text-on-primary px-gutter py-xs rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-label uppercase tracking-widest transition-all duration-100">
+            Say Hello
+        </a>
+    </nav>
+
+    <main class="pt-xl md:pt-[140px]">
+        <!-- Hero Section -->
+        <section id="home" class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-12 gap-xl items-center py-xl">
+            <div class="md:col-span-7 space-y-md">
+                <h1 class="font-h1 text-h1 text-on-background">
+                    Portafolio de <span class="text-primary italic">Yhonny_arb</span>
+                </h1>
+                <p class="font-h3 text-h3 text-on-surface-variant leading-tight">
+                    tu lugar de destino para empezar a despegar
+                </p>
+                <div class="flex items-center gap-base">
+                    <span class="w-12 h-1 bg-primary rounded-full"></span>
+                    <p class="font-body-lg text-secondary">un portafolio con un estilo único</p>
+                </div>
+                <div class="pt-md flex gap-md">
+                    <a href="#work" class="inline-block bg-secondary-container text-on-secondary-container px-lg py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-h3 transition-all">
+                        Explorar Proyectos
+                    </a>
+                    <a href="#contact" class="inline-block bg-surface border-2 border-on-background px-lg py-sm rounded-xl cel-shadow active-cel-interaction font-h3 transition-all flex items-center gap-xs">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                        🚀
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-5 relative">
+                <div class="bg-primary-container w-full aspect-square rounded-[2rem] border-2 border-on-background cel-shadow-lg relative overflow-hidden">
+                    <img alt="Hero Illustration" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNv6y8-dKPiw5wz2JRqrtxkJCiif9zH9mF3n0V423EdZMcgN27CYVGV_i3Sc1Xh-n0YHo9SUB7_cPEMPHfDk00Ay_d3ElOBvDh26kTPpooNONbYrEIbkcT2AjB1h2Pg7UwneWWSRCam0iWVrvAdpytCXFxEiY5G54deb1u6xCStRA7JDd_bI0z-oYkYBbBSer6APhJJGvmLsETmFQaCou8zzP5Zo38WFkZIBnLFQ9toxG8XQUwMkXYev3hpPQbctxfG8P2mlP5t1s" />
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -top-xs -right-xs bg-secondary-fixed text-on-secondary-fixed px-sm py-xs rounded-lg border-2 border-on-background cel-shadow -rotate-6">
+                    Digital Artist
+                </div>
+                <div class="absolute -bottom-xs -left-xs bg-tertiary-fixed text-on-tertiary-fixed px-sm py-xs rounded-lg border-2 border-on-background cel-shadow rotate-3">
+                    Multimedia Dev
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section [NEW] -->
+        <section id="about" class="max-w-container-max mx-auto px-gutter py-xl">
+            <div class="bg-surface-container-high rounded-[2rem] border-2 border-on-background p-lg md:p-xl flex flex-col md:flex-row gap-xl items-center relative overflow-hidden">
+                <!-- Abstract blobs -->
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+                
+                <div class="w-full md:w-1/3 relative z-10">
+                    <div class="aspect-square rounded-full border-4 border-on-background cel-shadow-lg overflow-hidden bg-surface">
+                        <img src="img/about_avatar_1778113213384.png" alt="Avatar Yhonny_arb" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-2/3 space-y-md relative z-10">
+                    <h2 class="font-h2 text-h2 text-on-background">Hola, soy <span class="text-primary italic">Yhonny</span> 👋</h2>
+                    <p class="font-body-lg text-on-surface-variant">
+                        Soy un desarrollador multimedia y artista digital apasionado por crear experiencias interactivas y visualmente impactantes. Mi enfoque combina la creatividad del arte visual con la lógica del código.
+                    </p>
+                    <p class="font-body-md text-on-surface-variant">
+                        Con un fuerte enfoque en el diseño centrado en el usuario, siempre busco romper la barrera entre la estética funcional y el arte puro. Ya sea diseñando interfaces, modelando en 3D o animando personajes, mi objetivo es que cada píxel cuente una historia.
+                    </p>
+                    
+                    <div class="pt-sm flex flex-wrap gap-sm">
+                        <span class="bg-primary-container text-on-primary-container px-sm py-xs rounded-lg font-label border-2 border-on-background">Creatividad</span>
+                        <span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg font-label border-2 border-on-background">Resolución de Problemas</span>
+                        <span class="bg-tertiary-container text-on-tertiary-container px-sm py-xs rounded-lg font-label border-2 border-on-background">Innovación</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section [NEW] -->
+        <section id="skills" class="max-w-container-max mx-auto px-gutter py-xl">
+            <div class="space-y-sm text-center mb-xl">
+                <h2 class="font-h2 text-h2 text-on-background">Mis Herramientas</h2>
+                <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Un conjunto de habilidades variadas que me permiten construir proyectos completos desde el concepto hasta la ejecución.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Skill 1 -->
+                <div class="bg-surface border-2 border-on-background rounded-xl p-md cel-shadow soft-glow-hover transition-all">
+                    <div class="w-16 h-16 bg-primary-container rounded-xl border-2 border-on-background flex items-center justify-center mb-md cel-shadow -rotate-3">
+                        <span class="material-symbols-outlined text-4xl text-on-primary-container">brush</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-xs text-on-background">Arte Digital</h3>
+                    <p class="font-body-md text-on-surface-variant mb-md">Ilustración, diseño de personajes y concept art usando técnicas modernas de shading.</p>
+                    <div class="flex flex-wrap gap-xs">
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">Photoshop</span>
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">Illustrator</span>
+                    </div>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-surface border-2 border-on-background rounded-xl p-md cel-shadow soft-glow-hover transition-all">
+                    <div class="w-16 h-16 bg-secondary-container rounded-xl border-2 border-on-background flex items-center justify-center mb-md cel-shadow rotate-3">
+                        <span class="material-symbols-outlined text-4xl text-on-secondary-container">code</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-xs text-on-background">Desarrollo Web</h3>
+                    <p class="font-body-md text-on-surface-variant mb-md">Creación de interfaces interactivas y responsivas que cobran vida en el navegador.</p>
+                    <div class="flex flex-wrap gap-xs">
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">HTML/CSS/JS</span>
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">Tailwind</span>
+                    </div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-surface border-2 border-on-background rounded-xl p-md cel-shadow soft-glow-hover transition-all relative overflow-hidden">
+                    <div class="w-16 h-16 bg-tertiary-container rounded-xl border-2 border-on-background flex items-center justify-center mb-md cel-shadow -rotate-6 relative z-10">
+                        <span class="material-symbols-outlined text-4xl text-on-tertiary-container">view_in_ar</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-xs text-on-background relative z-10">3D & Animación</h3>
+                    <p class="font-body-md text-on-surface-variant mb-md relative z-10">Modelado isométrico, low-poly y motion graphics para entornos digitales.</p>
+                    <div class="flex flex-wrap gap-xs relative z-10">
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">Blender</span>
+                        <span class="text-xs font-label bg-surface-container px-2 py-1 rounded border border-outline">After Effects</span>
+                    </div>
+                    <img src="img/skills_web_1778113224641.png" alt="3D Skill" class="absolute -right-10 -bottom-10 w-40 opacity-30 blur-[2px]" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="work" class="max-w-container-max mx-auto px-gutter py-xl">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+                <div class="space-y-sm">
+                    <h2 class="font-h2 text-h2 text-on-background">My Work Gallery</h2>
+                    <p class="font-body-lg text-on-surface-variant max-w-md">Una colección curada de proyectos donde el diseño y la tecnología se encuentran.</p>
+                </div>
+                <div class="w-full md:w-auto flex flex-col gap-sm">
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                        <input id="project-search" class="w-full md:w-80 pl-lg pr-sm py-xs bg-surface-container rounded-lg border-2 border-on-background focus:ring-0 focus:border-primary placeholder:text-outline" placeholder="Buscar proyectos..." type="text" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-sm mb-lg">
+                <button data-filter="all" class="filter-btn active bg-primary text-on-primary px-sm py-xs rounded-full border-2 border-on-background font-label transition-all">All Projects</button>
+                <button data-filter="graphic-design" class="filter-btn bg-surface border-2 border-on-background px-sm py-xs rounded-full font-label hover:bg-secondary-container transition-all text-on-background">Graphic Design</button>
+                <button data-filter="3d-modeling" class="filter-btn bg-surface border-2 border-on-background px-sm py-xs rounded-full font-label hover:bg-secondary-container transition-all text-on-background">3D Modeling</button>
+                <button data-filter="illustration" class="filter-btn bg-surface border-2 border-on-background px-sm py-xs rounded-full font-label hover:bg-secondary-container transition-all text-on-background">Illustration</button>
+                <button data-filter="animation" class="filter-btn bg-surface border-2 border-on-background px-sm py-xs rounded-full font-label hover:bg-secondary-container transition-all text-on-background">Animation</button>
+            </div>
+
+            <!-- Bento Grid of Work (Dynamic) -->
+            <div id="gallery-container" class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <!-- Los proyectos se cargarán aquí desde projects.js -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-container-max mx-auto px-gutter py-xl">
+            <div class="bg-surface-container-low rounded-[2.5rem] border-2 border-on-background p-lg md:p-xl grid grid-cols-1 md:grid-cols-2 gap-xl relative overflow-hidden">
+                <!-- Abstract blobs -->
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-container/30 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl"></div>
+                
+                <div class="relative space-y-md">
+                    <h2 class="font-h2 text-h2 text-on-background">Let's build something cool together.</h2>
+                    <p class="font-body-lg text-on-surface-variant">Si tienes una idea, un proyecto o solo quieres saludar, mi buzón está siempre abierto.</p>
+                    
+                    <div class="space-y-sm pt-md">
+                        <div class="flex items-center gap-sm">
+                            <div class="bg-primary text-on-primary p-xs rounded-lg border-2 border-on-background">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <span class="font-h3">hello@yhonny.dev</span>
+                        </div>
+                        <div class="flex items-center gap-sm">
+                            <div class="bg-secondary text-on-secondary p-xs rounded-lg border-2 border-on-background">
+                                <span class="material-symbols-outlined">alternate_email</span>
+                            </div>
+                            <span class="font-h3">@yhonny_arb</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="relative space-y-sm bg-surface p-md rounded-2xl border-2 border-on-background cel-shadow">
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Nombre</label>
+                        <input class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="Tu nombre" type="text" />
+                    </div>
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Email</label>
+                        <input class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="hola@ejemplo.com" type="email" />
+                    </div>
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Mensaje</label>
+                        <textarea class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" placeholder="¿En qué estás pensando?" rows="4"></textarea>
+                    </div>
+                    <button class="w-full bg-primary text-on-primary py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-h3 transition-all mt-base" type="button">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-xl py-lg px-gutter flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-highest border-t-2 border-on-background">
+        <div class="font-h3 text-h3 font-black text-on-background">Yhonny_arb</div>
+        <div class="flex flex-col items-center gap-sm">
+            <div class="flex gap-md">
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Behance</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Dribbble</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">LinkedIn</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Email</a>
+            </div>
+            <p class="font-body-md text-on-surface-variant text-center md:text-left">© 2024 Yhonny_arb. Built with pixels and play.</p>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="js/projects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

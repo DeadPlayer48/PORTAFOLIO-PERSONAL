@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Yhonny_arb | Proyecto</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+
+    <nav class="fixed top-sm left-1/2 -translate-x-1/2 w-[calc(100%-theme(spacing.gutter))] max-w-container-max z-50 flex justify-between items-center px-gutter py-xs bg-surface/90 backdrop-blur-md rounded-xl border-2 border-on-background shadow-[4px_4px_0px_0px_#6d4ca6]">
+        <div class="font-h3 text-h3 font-black text-on-background">Yhonny_arb</div>
+        <div class="flex gap-md items-center">
+            <a href="index.html#work" class="flex items-center gap-xs font-label text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                Volver al Portafolio
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-xl md:pt-[120px] pb-xl" id="project-content">
+        <!-- El contenido se cargará dinámicamente aquí -->
+        <div class="text-center py-xl">
+            <h2 class="font-h2 text-on-surface-variant">Cargando proyecto...</h2>
+        </div>
+    </main>
+
+    <footer class="w-full py-lg px-gutter flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-highest border-t-2 border-on-background mt-xl">
+        <div class="font-h3 text-h3 font-black text-on-background">Yhonny_arb</div>
+        <div class="flex flex-col items-center gap-sm">
+            <p class="font-body-md text-on-surface-variant text-center md:text-left">© 2024 Yhonny_arb. Built with pixels and play.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Datos y Renderizado -->
+    <script src="js/projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            const projectIndex = portfolioData.projects.findIndex(p => p.id === projectId);
+            
+            if (projectIndex === -1) {
+                document.getElementById('project-content').innerHTML = `
+                    <div class="text-center py-xl">
+                        <h1 class="font-h1 text-error mb-sm">Proyecto no encontrado</h1>
+                        <a href="index.html" class="text-primary underline font-body-lg">Volver al inicio</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const project = portfolioData.projects[projectIndex];
+            
+            // Determinar el siguiente proyecto
+            const nextIndex = (projectIndex + 1) % portfolioData.projects.length;
+            const nextProject = portfolioData.projects[nextIndex];
+
+            // Colores por categoría (para mantener coherencia)
+            let tagClass = 'bg-primary text-on-primary';
+            if(project.category === '3d-modeling') tagClass = 'bg-secondary text-on-secondary';
+            if(project.category === 'graphic-design') tagClass = 'bg-tertiary text-on-tertiary';
+            if(project.category === 'animation') tagClass = 'bg-primary-container text-on-primary-container';
+
+            // Hero section render
+            let heroHTML = '';
+            if (project.heroImage === 'brand_id_placeholder') {
+                heroHTML = `
+                    <div class="bg-tertiary-container w-full aspect-[21/9] rounded-[2rem] border-2 border-on-background cel-shadow-lg overflow-hidden relative flex items-center justify-center">
+                        <div class="font-h1 text-[4rem] md:text-[6rem] text-primary italic opacity-50">Brand_ID</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-lg">
+                            <div class="space-y-sm">
+                                <span class="${tagClass} px-sm py-xs rounded-lg font-label border-2 border-on-background inline-block">${project.categoryLabel}</span>
+                                <h1 class="font-h1 text-h1 text-surface">${project.title}</h1>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                heroHTML = `
+                    <div class="bg-surface-container-high w-full aspect-[21/9] rounded-[2rem] border-2 border-on-background cel-shadow-lg overflow-hidden relative">
+                        <img src="${project.heroImage}" alt="${project.title} Hero" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-lg">
+                            <div class="space-y-sm">
+                                <span class="${tagClass} px-sm py-xs rounded-lg font-label border-2 border-on-background inline-block">${project.categoryLabel}</span>
+                                <h1 class="font-h1 text-h1 text-surface">${project.title}</h1>
+                            </div>
+                        </div>
+                        ${project.category === 'animation' ? '<div class="absolute inset-0 flex items-center justify-center pointer-events-none"><span class="material-symbols-outlined text-surface text-8xl drop-shadow-lg">play_circle</span></div>' : ''}
+                    </div>
+                `;
+            }
+
+            // Establecer el título de la pestaña
+            document.title = `Yhonny_arb | ${project.title}`;
+
+            // Renderizar el contenido completo
+            document.getElementById('project-content').innerHTML = `
+                <section class="max-w-container-max mx-auto px-gutter mb-xl">
+                    ${heroHTML}
+                </section>
+
+                <section class="max-w-[800px] mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-xl">
+                    <div class="md:col-span-1 space-y-md">
+                        <div class="space-y-xs pb-sm border-b-2 border-outline-variant">
+                            <h3 class="font-label text-on-surface-variant uppercase">Rol</h3>
+                            <p class="font-body-lg text-on-background font-medium">${project.role}</p>
+                        </div>
+                        <div class="space-y-xs pb-sm border-b-2 border-outline-variant">
+                            <h3 class="font-label text-on-surface-variant uppercase">Herramientas</h3>
+                            <p class="font-body-lg text-on-background font-medium">${project.tools}</p>
+                        </div>
+                        <div class="space-y-xs pb-sm border-b-2 border-outline-variant">
+                            <h3 class="font-label text-on-surface-variant uppercase">Año</h3>
+                            <p class="font-body-lg text-on-background font-medium">${project.year}</p>
+                        </div>
+                        ${project.category === 'animation' ? `
+                        <div class="pt-sm">
+                            <a href="#" class="inline-block w-full text-center bg-secondary-container text-on-secondary-container px-sm py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-label transition-all">
+                                Ver Video
+                            </a>
+                        </div>` : ''}
+                    </div>
+
+                    <div class="md:col-span-2 space-y-md">
+                        ${project.content}
+                    </div>
+                </section>
+
+                <section class="max-w-container-max mx-auto px-gutter mt-xl">
+                    <a href="proyecto.html?id=${nextProject.id}" class="block bg-surface-container-low rounded-2xl border-2 border-on-background p-lg text-center cel-shadow soft-glow-hover transition-all">
+                        <span class="font-label text-on-surface-variant uppercase mb-xs block">Siguiente Proyecto</span>
+                        <h2 class="font-h2 text-primary hover:text-on-background transition-colors flex items-center justify-center gap-sm">
+                            ${nextProject.title} <span class="material-symbols-outlined text-4xl">arrow_forward</span>
+                        </h2>
+                    </a>
+                </section>
+            `;
+        });
+    </script>
+</body>
+</html>

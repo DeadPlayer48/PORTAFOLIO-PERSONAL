@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin | Portafolio Yhonny_arb</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    
+    <!-- Cargar los datos actuales -->
+    <script src="js/projects.js"></script>
+</head>
+<body class="bg-surface-container-low text-on-surface font-body-md overflow-x-hidden min-h-screen">
+
+    <nav class="w-full px-gutter py-sm bg-surface border-b-2 border-on-background flex justify-between items-center shadow-sm">
+        <div class="font-h3 text-h3 font-black text-on-background flex items-center gap-xs">
+            <span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+            Panel de Administración
+        </div>
+        <div class="flex gap-md">
+            <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs font-label">
+                <span class="material-symbols-outlined text-base">visibility</span> Ver Sitio
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-container-max mx-auto px-gutter py-xl grid grid-cols-1 md:grid-cols-12 gap-xl">
+        <!-- Sidebar: Lista de Proyectos -->
+        <div class="md:col-span-4 space-y-md">
+            <div class="flex justify-between items-center">
+                <h2 class="font-h2 text-h2 text-on-background">Tus Proyectos</h2>
+                <button id="btn-new-project" class="bg-primary text-on-primary p-xs rounded-lg border-2 border-on-background cel-shadow active-cel-interaction">
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+            </div>
+            
+            <div id="project-list" class="space-y-sm">
+                <!-- Se llena con JS -->
+            </div>
+
+            <div class="pt-lg border-t-2 border-outline-variant mt-lg">
+                <div class="bg-surface p-md rounded-xl border-2 border-on-background cel-shadow">
+                    <h3 class="font-h3 mb-xs text-on-background">Exportar Cambios</h3>
+                    <p class="font-body-md text-on-surface-variant mb-md text-sm">
+                        Al terminar de editar, descarga el archivo y guárdalo en la carpeta <code class="bg-surface-container px-1 py-0.5 rounded border border-outline">js/</code> reemplazando el archivo `projects.js` anterior.
+                    </p>
+                    <button id="btn-export" class="w-full bg-secondary-container text-on-secondary-container py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-label flex items-center justify-center gap-xs">
+                        <span class="material-symbols-outlined">download</span>
+                        Descargar projects.js
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editor Principal -->
+        <div class="md:col-span-8">
+            <div class="bg-surface rounded-2xl border-2 border-on-background p-lg cel-shadow">
+                <h2 id="editor-title" class="font-h2 text-h2 text-on-background mb-md">Editar Proyecto</h2>
+                
+                <form id="project-form" class="space-y-md">
+                    <input type="hidden" id="project-index" value="-1" />
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Título del Proyecto</label>
+                            <input id="input-title" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" type="text" required />
+                        </div>
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">ID (URL url amigable, sin espacios)</label>
+                            <input id="input-id" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" type="text" required />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Categoría Lógica</label>
+                            <select id="input-category" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary">
+                                <option value="illustration">Illustration</option>
+                                <option value="3d-modeling">3D Modeling</option>
+                                <option value="graphic-design">Graphic Design</option>
+                                <option value="animation">Animation</option>
+                            </select>
+                        </div>
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Etiqueta Visual (Ej: 3D Render)</label>
+                            <input id="input-category-label" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl focus:ring-0 focus:border-primary" type="text" required />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-md border-y-2 border-outline-variant py-md">
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Tu Rol</label>
+                            <input id="input-role" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl" type="text" required />
+                        </div>
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Herramientas</label>
+                            <input id="input-tools" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl" type="text" required />
+                        </div>
+                        <div class="space-y-xs">
+                            <label class="font-label text-on-surface-variant uppercase">Año</label>
+                            <input id="input-year" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl" type="text" required />
+                        </div>
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">URL Imagen Portada (Galería)</label>
+                        <input id="input-cover" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl text-sm" type="text" placeholder="https://... o 'brand_id_placeholder'" required />
+                    </div>
+                    
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">URL Imagen Hero (Detalle)</label>
+                        <input id="input-hero" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl text-sm" type="text" required />
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Breve Descripción (Aparece en Galería)</label>
+                        <textarea id="input-short-desc" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl" rows="2" required></textarea>
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Contenido HTML (Aparece en Detalle)</label>
+                        <textarea id="input-content" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl font-mono text-sm text-outline" rows="6" required></textarea>
+                    </div>
+
+                    <div class="flex items-center gap-sm bg-surface-container p-sm rounded-xl border-2 border-on-background">
+                        <input id="input-show" type="checkbox" class="w-5 h-5 rounded text-primary focus:ring-primary border-2 border-on-background" />
+                        <label for="input-show" class="font-label text-on-background">Mostrar en la Galería Principal (Index)</label>
+                    </div>
+
+                    <div class="pt-md flex gap-md justify-end">
+                        <button type="button" id="btn-delete" class="hidden bg-error-container text-on-error-container px-lg py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-label">
+                            Eliminar
+                        </button>
+                        <button type="submit" class="bg-primary text-on-primary px-lg py-sm rounded-xl border-2 border-on-background cel-shadow active-cel-interaction font-label">
+                            Guardar Cambios Locales
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trabajaremos con una copia local de los datos cargados desde projects.js
+            let currentData = JSON.parse(JSON.stringify(portfolioData.projects));
+            
+            const listContainer = document.getElementById('project-list');
+            const form = document.getElementById('project-form');
+            const btnNew = document.getElementById('btn-new-project');
+            const btnDelete = document.getElementById('btn-delete');
+            const btnExport = document.getElementById('btn-export');
+            
+            // Función para renderizar la lista lateral
+            const renderList = () => {
+                listContainer.innerHTML = '';
+                currentData.forEach((project, index) => {
+                    const el = document.createElement('div');
+                    el.className = 'bg-surface p-sm rounded-xl border-2 border-on-background flex justify-between items-center cursor-pointer hover:bg-surface-container transition-colors';
+                    el.innerHTML = `
+                        <div class="flex items-center gap-xs">
+                            ${project.showOnMain ? '<span class="w-2 h-2 rounded-full bg-primary block"></span>' : '<span class="w-2 h-2 rounded-full bg-outline block"></span>'}
+                            <span class="font-h3 text-base text-on-background">${project.title}</span>
+                        </div>
+                        <span class="material-symbols-outlined text-outline">edit</span>
+                    `;
+                    el.onclick = () => loadProjectIntoForm(index);
+                    listContainer.appendChild(el);
+                });
+            };
+
+            // Cargar datos al formulario
+            const loadProjectIntoForm = (index) => {
+                const p = currentData[index];
+                document.getElementById('editor-title').innerText = 'Editar Proyecto';
+                document.getElementById('project-index').value = index;
+                
+                document.getElementById('input-title').value = p.title;
+                document.getElementById('input-id').value = p.id;
+                document.getElementById('input-category').value = p.category;
+                document.getElementById('input-category-label').value = p.categoryLabel;
+                document.getElementById('input-role').value = p.role;
+                document.getElementById('input-tools').value = p.tools;
+                document.getElementById('input-year').value = p.year;
+                document.getElementById('input-cover').value = p.coverImage;
+                document.getElementById('input-hero').value = p.heroImage;
+                document.getElementById('input-short-desc').value = p.shortDescription;
+                document.getElementById('input-content').value = p.content.trim();
+                document.getElementById('input-show').checked = p.showOnMain;
+                
+                btnDelete.classList.remove('hidden');
+            };
+
+            // Preparar formulario para nuevo proyecto
+            btnNew.onclick = () => {
+                document.getElementById('editor-title').innerText = 'Nuevo Proyecto';
+                document.getElementById('project-index').value = '-1';
+                form.reset();
+                document.getElementById('input-show').checked = false;
+                btnDelete.classList.add('hidden');
+            };
+
+            // Guardar cambios en el array local
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const index = parseInt(document.getElementById('project-index').value);
+                
+                const spanOptions = {
+                    'illustration': 'md:col-span-8',
+                    '3d-modeling': 'md:col-span-4',
+                    'graphic-design': 'md:col-span-4',
+                    'animation': 'md:col-span-8'
+                };
+                const cat = document.getElementById('input-category').value;
+
+                const newProject = {
+                    id: document.getElementById('input-id').value,
+                    title: document.getElementById('input-title').value,
+                    category: cat,
+                    categoryLabel: document.getElementById('input-category-label').value,
+                    coverImage: document.getElementById('input-cover').value,
+                    heroImage: document.getElementById('input-hero').value,
+                    cardSpan: spanOptions[cat] || 'md:col-span-6',
+                    role: document.getElementById('input-role').value,
+                    tools: document.getElementById('input-tools').value,
+                    year: document.getElementById('input-year').value,
+                    shortDescription: document.getElementById('input-short-desc').value,
+                    content: document.getElementById('input-content').value,
+                    showOnMain: document.getElementById('input-show').checked
+                };
+
+                // Verificar si excede 4 en el main
+                if (newProject.showOnMain) {
+                    const currentlyShown = currentData.filter((p, i) => p.showOnMain && i !== index).length;
+                    if (currentlyShown >= 4) {
+                        alert('Atención: Solo se muestran 4 proyectos en la página principal. Desmarca otro antes de marcar este.');
+                        return;
+                    }
+                }
+
+                if (index === -1) {
+                    currentData.push(newProject);
+                } else {
+                    currentData[index] = newProject;
+                }
+
+                renderList();
+                alert('Cambios guardados localmente. Recuerda hacer clic en "Descargar projects.js" al finalizar.');
+            };
+
+            // Eliminar proyecto
+            btnDelete.onclick = () => {
+                if (confirm('¿Estás seguro de eliminar este proyecto?')) {
+                    const index = parseInt(document.getElementById('project-index').value);
+                    currentData.splice(index, 1);
+                    renderList();
+                    btnNew.click();
+                }
+            };
+
+            // Exportar datos a un archivo
+            btnExport.onclick = () => {
+                const dataString = `const portfolioData = {
+    // Los proyectos se listan aquí. El ID debe ser único y sin espacios.
+    projects: ${JSON.stringify(currentData, null, 8)}
+};`;
+                
+                const blob = new Blob([dataString], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'projects.js';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            };
+
+            // Inicializar
+            renderList();
+            if(currentData.length > 0) loadProjectIntoForm(0);
+        });
+    </script>
+</body>
+</html>
