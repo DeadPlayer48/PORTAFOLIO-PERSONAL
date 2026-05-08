@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Dynamic Gallery Rendering ---
     const galleryContainer = document.getElementById('gallery-container');
-    
+
     // Only run if we are on the main page with a gallery
     if (galleryContainer && typeof portfolioData !== 'undefined') {
         // Filter projects that should be shown on main, and limit to 4
@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             let bgClass = 'bg-surface-container-high';
             let tagClass = 'bg-primary text-on-primary';
             let arrowClass = 'text-primary';
-            
-            if(project.category === '3d-modeling') {
+
+            if (project.category === '3d-modeling') {
                 bgClass = 'bg-secondary-container';
                 tagClass = 'bg-secondary text-on-secondary';
                 arrowClass = 'text-secondary';
-            } else if(project.category === 'graphic-design') {
-                bgClass = 'bg-tertiary-container';
+            } else if (project.category === 'graphic-design') {
+                bgClass = 'bg-surface-container-high';
                 tagClass = 'bg-tertiary text-on-tertiary';
                 arrowClass = 'text-tertiary';
-            } else if(project.category === 'animation') {
+            } else if (project.category === 'animation') {
                 bgClass = 'bg-surface-container-highest';
                 tagClass = 'bg-primary-container text-on-primary-container';
                 arrowClass = 'text-primary';
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 imageContent = `
-                    <img class="w-full h-full object-cover ${project.category==='animation'?'group-hover:scale-105':''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
+                    <img class="w-full h-full object-cover ${ (project.category === 'illustration' && project.id !== 'HKPOSTER') ? 'grayscale group-hover:grayscale-0' : ''} ${project.category === 'animation' ? 'group-hover:scale-105' : ''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
                     ${project.category === 'animation' ? '<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20"><span class="material-symbols-outlined text-surface text-6xl">play_circle</span></div>' : ''}
                 `;
             }
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             htmlContent += `
                 <div class="${project.cardSpan} group cursor-pointer project-card transition-all duration-300" data-category="${project.category}" onclick="window.location.href='proyecto.html?id=${project.id}'">
                     <div class="${bgClass} h-full rounded-xl border-2 border-on-background overflow-hidden soft-glow-hover transition-all duration-300">
-                        <div class="relative ${project.coverImage === 'brand_id_placeholder' ? 'h-[250px] p-md flex items-center justify-center' : (project.category === 'illustration' ? 'h-[400px]' : (project.category === 'animation' ? 'h-[300px] overflow-hidden' : 'h-[250px]'))}">
+                        <div class="relative ${project.coverImage === 'brand_id_placeholder' ? 'h-[250px] p-md flex items-center justify-center' : (project.category === 'illustration' ? 'h-[500px]' : (project.category === 'animation' ? 'h-[300px] overflow-hidden' : 'h-[250px]'))}">
                             ${imageContent}
                             ${project.coverImage !== 'brand_id_placeholder' ? `<div class="absolute top-sm right-sm ${tagClass} px-sm py-xs rounded-lg font-label border-2 border-on-background">${project.categoryLabel}</div>` : ''}
                         </div>
@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const subject = encodeURIComponent(`Nuevo mensaje de ${name} desde tu Portafolio`);
             const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`);
 
-            window.location.href = `mailto:hello@yhonny.dev?subject=${subject}&body=${body}`;
-            
+            window.location.href = `mailto:yhonnyarb@gmail.com?subject=${subject}&body=${body}`;
+
             contactForm.reset();
         });
     }
