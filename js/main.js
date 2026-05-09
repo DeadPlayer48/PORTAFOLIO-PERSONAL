@@ -142,4 +142,39 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
+
+    // --- Active Nav Link on Scroll ---
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    const activeClasses = ['font-h3', 'text-h3', 'text-primary', 'border-b-2', 'border-primary', 'pb-1'];
+    const inactiveClasses = ['font-body-md', 'text-on-surface-variant', 'font-medium', 'hover:bg-primary-container', 'transition-all', 'duration-200', 'px-sm', 'py-xs', 'rounded-lg'];
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of the screen
+        threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute('id');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove(...activeClasses);
+                    link.classList.add(...inactiveClasses);
+                    
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.remove(...inactiveClasses);
+                        link.classList.add(...activeClasses);
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
 });
