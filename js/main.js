@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 bgClass = 'bg-secondary-container';
                 tagClass = 'bg-secondary text-on-secondary';
                 arrowClass = 'text-secondary';
-            } else if (project.category === 'graphic-design') {
-                bgClass = 'bg-surface-container-high';
-                tagClass = 'bg-tertiary text-on-tertiary';
-                arrowClass = 'text-tertiary';
             } else if (project.category === 'animation') {
                 bgClass = 'bg-surface-container-highest';
                 tagClass = 'bg-primary-container text-on-primary-container';
@@ -41,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 imageContent = `
-                    <img class="w-full h-full object-cover ${ (project.category === 'illustration' && project.id !== 'HKPOSTER') ? 'grayscale group-hover:grayscale-0' : ''} ${project.category === 'animation' ? 'group-hover:scale-105' : ''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
+                    <img class="w-full h-full object-cover ${project.category === 'animation' ? 'group-hover:scale-105' : ''} transition-all duration-500" src="${project.coverImage}" alt="${project.title}" />
                     ${project.category === 'animation' ? '<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20"><span class="material-symbols-outlined text-surface text-6xl">play_circle</span></div>' : ''}
                 `;
             }

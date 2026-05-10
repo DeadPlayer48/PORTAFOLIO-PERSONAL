@@ -117,6 +117,16 @@
                     </div>
 
                     <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">URL Imagen Completa del Proyecto</label>
+                        <input id="input-full-image" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl text-sm" type="text" placeholder="Opcional. Ej: img/proyecto-completo.jpg" />
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label text-on-surface-variant uppercase">Enlace al Proyecto Completo</label>
+                        <input id="input-project-link" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl text-sm" type="text" placeholder="Opcional. Ej: https://behance.net/..." />
+                    </div>
+
+                    <div class="space-y-xs">
                         <label class="font-label text-on-surface-variant uppercase">Breve Descripción (Aparece en Galería)</label>
                         <textarea id="input-short-desc" class="w-full p-sm bg-surface-container-lowest border-2 border-on-background rounded-xl" rows="2" required></textarea>
                     </div>
@@ -188,6 +198,8 @@
                 document.getElementById('input-year').value = p.year;
                 document.getElementById('input-cover').value = p.coverImage;
                 document.getElementById('input-hero').value = p.heroImage;
+                document.getElementById('input-full-image').value = p.fullImage || '';
+                document.getElementById('input-project-link').value = p.projectLink || '';
                 document.getElementById('input-short-desc').value = p.shortDescription;
                 document.getElementById('input-content').value = p.content.trim();
                 document.getElementById('input-show').checked = p.showOnMain;
@@ -224,6 +236,8 @@
                     categoryLabel: document.getElementById('input-category-label').value,
                     coverImage: document.getElementById('input-cover').value,
                     heroImage: document.getElementById('input-hero').value,
+                    fullImage: document.getElementById('input-full-image').value,
+                    projectLink: document.getElementById('input-project-link').value,
                     cardSpan: spanOptions[cat] || 'md:col-span-6',
                     role: document.getElementById('input-role').value,
                     tools: document.getElementById('input-tools').value,
